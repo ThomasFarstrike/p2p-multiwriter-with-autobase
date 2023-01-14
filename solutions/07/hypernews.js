@@ -36,7 +36,7 @@ class Hypernews {
     await writer.ready()
 
     this.name = args.name || writer.key.slice(0, 8).toString('hex')
-    this.autobase = new Autobase( { inputs: [writer], localInput: writer , outputs: [viewOutput], unwrap: true })
+    this.autobase = new Autobase( { inputs: [writer], localInput: writer, outputs: [viewOutput] })
 
     for (const w of [].concat(args.writers || [])) {
       await this.autobase.addLocalInput(this.store.get(Buffer.from(w, 'hex')))
